@@ -10,15 +10,67 @@ export function ContactSection() {
     company: "",
     message: "",
   });
+  const [toast, setToast] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+
+    if (!name || !email || !message) {
+      setToast({
+        type: "error",
+        message: "Completá nombre, email y mensaje para enviar la consulta.",
+      });
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setToast({
+        type: "error",
+        message: "Ingresá un email válido para que podamos responderte.",
+      });
+      return;
+    }
+
+    setToast({
+      type: "success",
+      message:
+        "Tu consulta fue enviada correctamente. Te contactaremos pronto.",
+    });
+
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      message: "",
+    });
+
+    setTimeout(() => {
+      setToast(null);
+    }, 4000);
   };
 
   return (
     <section id="contacto" className="py-24 lg:py-32 bg-background">
+      {toast && (
+        <div
+          className={`fixed right-6 top-24 z-50 max-w-sm rounded-lg border px-5 py-4 shadow-lg ${
+            toast.type === "success"
+              ? "border-green-200 bg-green-50 text-green-800"
+              : "border-red-200 bg-red-50 text-red-800"
+          }`}
+        >
+          <p className="text-sm font-medium">{toast.message}</p>
+        </div>
+      )}
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact info */}
@@ -79,7 +131,7 @@ export function ContactSection() {
 
           {/* Contact form */}
           <div className="bg-card p-8 lg:p-10 rounded-lg border border-border shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} noValidate className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -96,7 +148,7 @@ export function ContactSection() {
                   }
                   className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground"
                   placeholder="Tu nombre"
-                  required
+                  
                 />
               </div>
 
@@ -116,7 +168,7 @@ export function ContactSection() {
                   }
                   className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground"
                   placeholder="tu@email.com"
-                  required
+                  
                 />
               </div>
 
@@ -155,7 +207,7 @@ export function ContactSection() {
                   }
                   className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground resize-none"
                   placeholder="Cuentanos sobre tu proyecto..."
-                  required
+                  
                 />
               </div>
 
