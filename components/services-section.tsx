@@ -52,14 +52,14 @@ export function ServicesSection() {
         </div>
 
         {/* Services grid */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
           {services.map((service) => (
             <Link
               key={service.number}
               href={service.href}
-              className="group block p-8 lg:p-10 border border-border rounded-lg hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              className="group block rounded-lg border border-border p-8 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-lg lg:p-10 md:text-left"
             >
-              <div className="flex items-start gap-6">
+              <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
                 <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                   <service.icon className="h-10 w-10" />
                 </div>
