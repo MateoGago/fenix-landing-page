@@ -14,6 +14,11 @@ export function ContactSection() {
     type: "success" | "error";
     message: string;
   } | null>(null);
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,18 +29,32 @@ export function ContactSection() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
-    if (!name || !email || !message) {
-      setToast({
-        type: "error",
-        message: "Completá nombre, email y mensaje para enviar la consulta.",
-      });
-      return;
+    const newErrors: {
+      name?: string;
+      email?: string;
+      message?: string;
+    } = {};
+
+    if (!name) {
+      newErrors.name = "El nombre es obligatorio.";
     }
 
-    if (!emailRegex.test(email)) {
+    if (!email) {
+      newErrors.email = "El email es obligatorio.";
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Ingresá un email válido.";
+    }
+
+    if (!message) {
+      newErrors.message = "El mensaje es obligatorio.";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
       setToast({
         type: "error",
-        message: "Ingresá un email válido para que podamos responderte.",
+        message: "Revisá los campos marcados antes de enviar.",
       });
       return;
     }
@@ -52,6 +71,8 @@ export function ContactSection() {
       company: "",
       message: "",
     });
+
+    setErrors({});
 
     setTimeout(() => {
       setToast(null);
@@ -137,19 +158,28 @@ export function ContactSection() {
                   htmlFor="name"
                   className="block text-sm font-medium text-foreground mb-2"
                 >
-                  Nombre completo
+                  Nombre completo <span className="text-red-500">*</span>
                 </label>
+
                 <input
                   type="text"
                   id="name"
                   value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground"
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    setErrors({ ...errors, name: undefined });
+                  }}
+                  className={`w-full px-4 py-3 bg-background border rounded-lg focus:outline-none focus:ring-2 text-foreground ${
+                    errors.name
+                      ? "border-red-500 focus:ring-red-200"
+                      : "border-input focus:ring-ring"
+                  }`}
                   placeholder="Tu nombre"
-                  
                 />
+
+                {errors.name && (
+                  <p className="mt-2 text-sm text-red-600">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -157,19 +187,28 @@ export function ContactSection() {
                   htmlFor="email"
                   className="block text-sm font-medium text-foreground mb-2"
                 >
-                  Email
+                  Email <span className="text-red-500">*</span>
                 </label>
+
                 <input
-                  type="email"
+                  type="text"
                   id="email"
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground"
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    setErrors({ ...errors, email: undefined });
+                  }}
+                  className={`w-full px-4 py-3 bg-background border rounded-lg focus:outline-none focus:ring-2 text-foreground ${
+                    errors.email
+                      ? "border-red-500 focus:ring-red-200"
+                      : "border-input focus:ring-ring"
+                  }`}
                   placeholder="tu@email.com"
-                  
                 />
+
+                {errors.email && (
+                  <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+                )}
               </div>
 
               <div>
@@ -196,19 +235,28 @@ export function ContactSection() {
                   htmlFor="message"
                   className="block text-sm font-medium text-foreground mb-2"
                 >
-                  Mensaje
+                  Mensaje <span className="text-red-500">*</span>
                 </label>
+
                 <textarea
                   id="message"
                   rows={4}
                   value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground resize-none"
-                  placeholder="Cuentanos sobre tu proyecto..."
-                  
+                  onChange={(e) => {
+                    setFormData({ ...formData, message: e.target.value });
+                    setErrors({ ...errors, message: undefined });
+                  }}
+                  className={`w-full px-4 py-3 bg-background border rounded-lg focus:outline-none focus:ring-2 text-foreground resize-none ${
+                    errors.message
+                      ? "border-red-500 focus:ring-red-200"
+                      : "border-input focus:ring-ring"
+                  }`}
+                  placeholder="Contanos sobre tu proyecto..."
                 />
+
+                {errors.message && (
+                  <p className="mt-2 text-sm text-red-600">{errors.message}</p>
+                )}
               </div>
 
               <button
