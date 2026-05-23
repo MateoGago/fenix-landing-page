@@ -53,16 +53,16 @@ export function ServicesSection() {
               className="group p-8 lg:p-10 border border-border rounded-lg hover:border-primary/30 hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-start gap-6">
-                <span className="text-5xl lg:text-6xl font-bold text-muted-foreground/20 group-hover:text-primary/20 transition-colors">
-                  {service.number}
-                </span>
+                <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                  <service.icon className="h-10 w-10" />
+                </div>
                 <div className="flex-1 pt-2">
-                  <div className="flex items-center gap-3 mb-4">
-                    <service.icon className="w-6 h-6 text-primary" />
+                  <div className="mb-4">
                     <h3 className="text-xl lg:text-2xl font-semibold text-foreground">
                       {service.title}
                     </h3>
                   </div>
+
                   <p className="text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
