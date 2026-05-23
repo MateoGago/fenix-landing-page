@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { newsPosts } from "@/lib/data/news";
 
 export default function NovedadesPage() {
@@ -57,9 +57,14 @@ export default function NovedadesPage() {
                   {post.title}
                 </h2>
 
-                <p className="mt-4 leading-7 text-[#667381]">
-                  {post.excerpt}
-                </p>
+                <p className="mt-4 leading-7 text-[#667381]">{post.excerpt}</p>
+                <Link
+                  href={`/novedades/${post.slug}`}
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#2E6F9E] transition hover:text-[#102B4E]"
+                >
+                  Leer más
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </article>
           ))}
