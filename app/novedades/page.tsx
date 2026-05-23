@@ -2,9 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { newsPosts } from "@/lib/data/news";
+import { HeaderMinimal } from "@/components/header-minimal";
+import { FooterMinimal } from "@/components/footer-minimal";
 
 export default function NovedadesPage() {
   return (
+    <>
+      <HeaderMinimal />
     <main className="min-h-screen bg-[#F6F8FA]">
       <section className="bg-[#071421] px-6 pb-20 pt-28 text-white lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -71,5 +75,7 @@ export default function NovedadesPage() {
         </div>
       </section>
     </main>
+     <FooterMinimal />
+    </>
   );
 }

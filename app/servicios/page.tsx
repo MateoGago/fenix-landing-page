@@ -14,6 +14,8 @@ import {
   PackageCheck,
   Building2,
 } from "lucide-react";
+import { HeaderMinimal } from "@/components/header-minimal";
+import { FooterMinimal } from "@/components/footer-minimal";
 
 const services = [
   {
@@ -195,6 +197,9 @@ export default function ServiciosPage() {
   };
 
   return (
+     <>
+    <HeaderMinimal />
+
     <main className="min-h-screen bg-[#F6F8FA]">
       <section className="bg-[#071421] px-6 pb-20 pt-28 text-white lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -345,5 +350,7 @@ export default function ServiciosPage() {
         </div>
       </section>
     </main>
+     <FooterMinimal />
+  </>
   );
 }
