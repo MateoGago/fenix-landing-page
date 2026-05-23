@@ -19,7 +19,7 @@ export function News() {
             </p>
           </div>
           <Link
-            href="#novedades"
+            href="/novedades"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#2E6F9E] hover:text-[#102B4E] transition-colors whitespace-nowrap group flex-shrink-0"
           >
             Ver más novedades
@@ -60,7 +60,7 @@ export function News() {
                   {post.excerpt}
                 </p>
                 <Link
-                  href="#novedades"
+                  href="/novedades"
                   className="inline-flex items-center gap-1 text-xs font-semibold text-[#2E6F9E] hover:text-[#102B4E] transition-colors mt-1 group/link"
                 >
                   Leer más

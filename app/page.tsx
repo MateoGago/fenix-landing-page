@@ -5,6 +5,7 @@ import { ProcessSection } from "@/components/process-section";
 import { AboutSection } from "@/components/about-section";
 import { ContactSection } from "@/components/contact-section";
 import { FooterMinimal } from "@/components/footer-minimal";
+import { News } from "@/components/news";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <ServicesSection />
       <ProcessSection />
       <AboutSection />
+      <News />
       <ContactSection />
       <FooterMinimal />
     </main>

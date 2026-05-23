@@ -1,5 +1,5 @@
 export interface NewsPost {
-  id: string;
+  id: number;
   category: string;
   title: string;
   excerpt: string;
@@ -9,30 +9,30 @@ export interface NewsPost {
 
 export const newsPosts: NewsPost[] = [
   {
-    id: "documentacion-importacion",
-    category: "Aduana",
+    id: 1,
+    category: "Importación",
     title: "Documentación clave antes de importar",
     excerpt:
-      "Qué revisar antes de iniciar una operación para evitar demoras y costos inesperados.",
-    image: "/images/news-customs.jpg",
-    imageAlt: "Documentación aduanera",
+      "Conocé qué documentos revisar antes de iniciar una operación para evitar demoras, costos inesperados y problemas en aduana.",
+    image: "/images/import.jpg",
+    imageAlt: "Contenedores y documentación de importación",
   },
   {
-    id: "planificar-tiempos-costos",
+    id: 2,
     category: "Logística",
-    title: "Cómo planificar tiempos y costos",
+    title: "Cómo planificar tiempos y costos logísticos",
     excerpt:
-      "Buenas prácticas para coordinar cargas internacionales con mayor previsibilidad.",
-    image: "/images/news-logistics.jpg",
-    imageAlt: "Planificación logística",
+      "Una buena planificación permite anticipar tiempos de tránsito, gastos asociados y decisiones importantes antes de mover la carga.",
+    image: "/images/cargo-ship.jpg",
+    imageAlt: "Buque de carga en operación logística internacional",
   },
   {
-    id: "primeros-pasos-exportar",
-    category: "Mercados",
-    title: "Primeros pasos para exportar",
+    id: 3,
+    category: "Exportación",
+    title: "Primeros pasos para exportar desde Argentina",
     excerpt:
-      "Criterios iniciales para evaluar una oportunidad comercial en el exterior.",
-    image: "/images/news-export.jpg",
-    imageAlt: "Comercio internacional",
+      "Aspectos iniciales que una empresa debe tener en cuenta antes de vender al exterior: documentación, destino, logística y viabilidad.",
+    image: "/images/export.jpg",
+    imageAlt: "Operación de exportación y comercio internacional",
   },
 ];
