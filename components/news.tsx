@@ -33,8 +33,9 @@ export function News() {
         {/* Posts grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {newsPosts.map((post) => (
-            <article
+            <Link
               key={post.id}
+              href={`/novedades/${post.slug}`}
               className="bg-white border border-[#DDE1E7] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col group"
             >
               {/* Image */}
@@ -59,18 +60,15 @@ export function News() {
                 <p className="text-sm text-[#667381] leading-relaxed flex-1">
                   {post.excerpt}
                 </p>
-                <Link
-                  href={`/novedades/${post.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#2E6F9E] hover:text-[#102B4E] transition-colors mt-1 group/link"
-                >
+                <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#2E6F9E] hover:text-[#102B4E] transition-colors mt-1 group/link">
                   Leer más
                   <ArrowRight
                     size={12}
                     className="transition-transform duration-200 group-hover/link:translate-x-0.5"
                   />
-                </Link>
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

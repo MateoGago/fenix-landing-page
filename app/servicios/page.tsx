@@ -161,13 +161,14 @@ export default function ServiciosPage() {
 
   useEffect(() => {
     const openServiceFromHash = () => {
-      const hash = window.location.hash.replace("#", "");
+      const hash = window.location.hash.split("#").filter(Boolean).at(-1);
 
       if (!hash) return;
 
       const service = services.find((item) => item.slug === hash);
 
       if (!service) return;
+      window.history.replaceState(null, "", `/servicios#${service.slug}`);
 
       setOpenService(service.id);
 
@@ -197,160 +198,160 @@ export default function ServiciosPage() {
   };
 
   return (
-     <>
-    <HeaderMinimal />
+    <>
+      <HeaderMinimal />
 
-    <main className="min-h-screen bg-[#F6F8FA]">
-      <section className="bg-[#071421] px-6 pb-20 pt-28 text-white lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <Link
-            href="/"
-            className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition hover:text-white"
-          >
-            <ArrowLeft size={16} />
-            Volver al inicio
-          </Link>
+      <main className="min-h-screen bg-[#F6F8FA]">
+        <section className="bg-[#071421] px-6 pb-20 pt-28 text-white lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <Link
+              href="/"
+              className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition hover:text-white"
+            >
+              <ArrowLeft size={16} />
+              Volver al inicio
+            </Link>
 
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-white/50">
-            Servicios
-          </p>
-
-          <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight md:text-6xl">
-            Servicios de comercio exterior para empresas.
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-            Conocé en detalle cómo Fenix acompaña operaciones de importación,
-            exportación, logística internacional y gestión documental.
-          </p>
-        </div>
-      </section>
-
-      <section className="px-6 py-20 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#2E6F9E]">
-              Áreas de trabajo
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-white/50">
+              Servicios
             </p>
 
-            <h2 className="text-3xl font-bold leading-tight text-[#102B4E] md:text-4xl">
-              Todo lo necesario para operar de forma clara y ordenada.
-            </h2>
+            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+              Servicios de comercio exterior para empresas.
+            </h1>
 
-            <p className="mt-5 text-base leading-7 text-[#667381]">
-              Cada servicio está pensado para reducir incertidumbre, ordenar la
-              documentación y acompañar al cliente en cada etapa de la
-              operación.
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+              Conocé en detalle cómo Fenix acompaña operaciones de importación,
+              exportación, logística internacional y gestión documental.
             </p>
+          </div>
+        </section>
 
-            <div className="mt-8 rounded-xl border border-[#DDE1E7] bg-white p-6">
-              <p className="text-sm font-semibold text-[#102B4E]">
-                ¿No sabés qué servicio necesitás?
+        <section className="px-6 py-20 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#2E6F9E]">
+                Áreas de trabajo
               </p>
-              <p className="mt-2 text-sm leading-6 text-[#667381]">
-                Podés enviarnos tu consulta y te orientamos sobre los próximos
-                pasos según tu operación.
+
+              <h2 className="text-3xl font-bold leading-tight text-[#102B4E] md:text-4xl">
+                Todo lo necesario para operar de forma clara y ordenada.
+              </h2>
+
+              <p className="mt-5 text-base leading-7 text-[#667381]">
+                Cada servicio está pensado para reducir incertidumbre, ordenar
+                la documentación y acompañar al cliente en cada etapa de la
+                operación.
               </p>
+
+              <div className="mt-8 rounded-xl border border-[#DDE1E7] bg-white p-6">
+                <p className="text-sm font-semibold text-[#102B4E]">
+                  ¿No sabés qué servicio necesitás?
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[#667381]">
+                  Podés enviarnos tu consulta y te orientamos sobre los próximos
+                  pasos según tu operación.
+                </p>
+
+                <Link
+                  href="/#contacto"
+                  className="mt-5 inline-flex rounded-md bg-[#102B4E] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#173B66]"
+                >
+                  Consultar operación
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {services.map((service) => {
+                const Icon = service.icon;
+                const isOpen = openService === service.id;
+
+                return (
+                  <article
+                    id={service.slug}
+                    key={service.id}
+                    className="scroll-mt-28 overflow-hidden rounded-xl border border-[#DDE1E7] bg-white shadow-sm"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => toggleService(service.id)}
+                      className="flex w-full items-center justify-between gap-5 p-6 text-left transition hover:bg-[#F6F8FA]"
+                      aria-expanded={isOpen}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#EAF2F8] text-[#102B4E]">
+                          <Icon size={24} />
+                        </div>
+
+                        <div>
+                          <h3 className="text-lg font-bold text-[#102B4E]">
+                            {service.title}
+                          </h3>
+                          <p className="mt-1 text-sm leading-6 text-[#667381]">
+                            {service.shortDescription}
+                          </p>
+                        </div>
+                      </div>
+
+                      <ChevronDown
+                        size={22}
+                        className={`shrink-0 text-[#102B4E] transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {isOpen && (
+                      <div className="border-t border-[#DDE1E7] px-6 pb-6 pt-5">
+                        <p className="max-w-3xl text-sm leading-7 text-[#667381]">
+                          {service.description}
+                        </p>
+
+                        <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                          {service.items.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-3 text-sm leading-6 text-[#17212B]"
+                            >
+                              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#2E6F9E]" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 pb-20 lg:px-8">
+          <div className="mx-auto max-w-7xl rounded-2xl bg-[#102B4E] p-8 text-white md:p-12">
+            <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+              <div>
+                <h2 className="text-3xl font-bold">
+                  ¿Querés iniciar una consulta?
+                </h2>
+                <p className="mt-3 max-w-2xl text-white/70">
+                  Contanos qué necesitás importar, exportar o resolver y te
+                  orientamos con los próximos pasos.
+                </p>
+              </div>
 
               <Link
                 href="/#contacto"
-                className="mt-5 inline-flex rounded-md bg-[#102B4E] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#173B66]"
+                className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#102B4E] transition hover:bg-[#EAF2F8]"
               >
-                Consultar operación
+                Contactar ahora
               </Link>
             </div>
           </div>
-
-          <div className="space-y-4">
-            {services.map((service) => {
-              const Icon = service.icon;
-              const isOpen = openService === service.id;
-
-              return (
-                <article
-                  id={service.slug}
-                  key={service.id}
-                  className="scroll-mt-28 overflow-hidden rounded-xl border border-[#DDE1E7] bg-white shadow-sm"
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleService(service.id)}
-                    className="flex w-full items-center justify-between gap-5 p-6 text-left transition hover:bg-[#F6F8FA]"
-                    aria-expanded={isOpen}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#EAF2F8] text-[#102B4E]">
-                        <Icon size={24} />
-                      </div>
-
-                      <div>
-                        <h3 className="text-lg font-bold text-[#102B4E]">
-                          {service.title}
-                        </h3>
-                        <p className="mt-1 text-sm leading-6 text-[#667381]">
-                          {service.shortDescription}
-                        </p>
-                      </div>
-                    </div>
-
-                    <ChevronDown
-                      size={22}
-                      className={`shrink-0 text-[#102B4E] transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-
-                  {isOpen && (
-                    <div className="border-t border-[#DDE1E7] px-6 pb-6 pt-5">
-                      <p className="max-w-3xl text-sm leading-7 text-[#667381]">
-                        {service.description}
-                      </p>
-
-                      <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                        {service.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-3 text-sm leading-6 text-[#17212B]"
-                          >
-                            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#2E6F9E]" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 pb-20 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-2xl bg-[#102B4E] p-8 text-white md:p-12">
-          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
-            <div>
-              <h2 className="text-3xl font-bold">
-                ¿Querés iniciar una consulta?
-              </h2>
-              <p className="mt-3 max-w-2xl text-white/70">
-                Contanos qué necesitás importar, exportar o resolver y te
-                orientamos con los próximos pasos.
-              </p>
-            </div>
-
-            <Link
-              href="/#contacto"
-              className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#102B4E] transition hover:bg-[#EAF2F8]"
-            >
-              Contactar ahora
-            </Link>
-          </div>
-        </div>
-      </section>
-    </main>
-     <FooterMinimal />
-  </>
+        </section>
+      </main>
+      <FooterMinimal />
+    </>
   );
 }

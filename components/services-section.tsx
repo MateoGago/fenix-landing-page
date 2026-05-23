@@ -1,33 +1,38 @@
 import Link from "next/link";
 import { Ship, FileText, Globe, TrendingUp, ArrowRight } from "lucide-react";
+
 const services = [
   {
     icon: Ship,
     number: "01",
     title: "Importaciones",
+    href: "/servicios#importaciones",
     description:
-      "Gestionamos todo el proceso de importacion, desde la coordinacion con proveedores hasta el despacho aduanero.",
+      "Gestionamos todo el proceso de importación, desde la coordinación con proveedores hasta el despacho aduanero.",
   },
   {
     icon: Globe,
     number: "02",
     title: "Exportaciones",
+    href: "/servicios#exportaciones",
     description:
-      "Acompanamos tu expansion internacional con documentacion, logistica y cumplimiento normativo.",
+      "Acompañamos tu expansión internacional con documentación, logística y cumplimiento normativo.",
   },
   {
     icon: FileText,
     number: "03",
-    title: "Despacho Aduanero",
+    title: "Despacho aduanero",
+    href: "/servicios#despacho-aduanero",
     description:
-      "Tramites aduaneros agiles y precisos, minimizando tiempos y costos en cada operacion.",
+      "Trámites aduaneros ágiles y precisos, minimizando tiempos y costos en cada operación.",
   },
   {
     icon: TrendingUp,
     number: "04",
-    title: "Consultoria",
+    title: "Consultoría",
+    href: "/servicios#consultoria",
     description:
-      "Asesoria estrategica para optimizar tus operaciones de comercio exterior.",
+      "Asesoría estratégica para optimizar tus operaciones de comercio exterior.",
   },
 ];
 
@@ -40,6 +45,7 @@ export function ServicesSection() {
           <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
             Nuestros servicios
           </p>
+
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
             Soluciones integrales para tu comercio internacional
           </h2>
@@ -48,14 +54,16 @@ export function ServicesSection() {
         {/* Services grid */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {services.map((service) => (
-            <div
+            <Link
               key={service.number}
-              className="group p-8 lg:p-10 border border-border rounded-lg hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              href={service.href}
+              className="group block p-8 lg:p-10 border border-border rounded-lg hover:border-primary/30 hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-start gap-6">
                 <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                   <service.icon className="h-10 w-10" />
                 </div>
+
                 <div className="flex-1 pt-2">
                   <div className="mb-4">
                     <h3 className="text-xl lg:text-2xl font-semibold text-foreground">
@@ -68,9 +76,10 @@ export function ServicesSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
         <div className="mt-14 flex justify-center">
           <Link
             href="/servicios"
