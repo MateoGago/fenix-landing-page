@@ -60,7 +60,7 @@ export function News() {
                   {post.excerpt}
                 </p>
                 <Link
-                  href="/novedades"
+                  href={`/novedades/${post.slug}`}
                   className="inline-flex items-center gap-1 text-xs font-semibold text-[#2E6F9E] hover:text-[#102B4E] transition-colors mt-1 group/link"
                 >
                   Leer más
