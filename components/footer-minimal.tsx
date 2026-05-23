@@ -103,10 +103,9 @@ export function FooterMinimal() {
               Contacto
             </h4>
             <ul className="space-y-4 text-white/70">
-              <li>Av. Comercio Internacional 1234</li>
-              <li>Buenos Aires, Argentina</li>
-              <li>+54 11 4567-8900</li>
-              <li>contacto@fenixcomex.com</li>
+              <li>Puerto Madryn, Chubut, Argentina</li>
+              <li>+54 9 280 460-5206</li>
+              <li>alegago@fenixcomercioexterior.com.ar</li>
             </ul>
           </div>
         </div>
@@ -117,14 +116,6 @@ export function FooterMinimal() {
             &copy; {new Date().getFullYear()} Fenix Comercio Exterior. Todos los
             derechos reservados.
           </p>
-          <div className="flex gap-6 text-sm text-white/40">
-            <Link href="#" className="hover:text-white/60 transition-colors">
-              Terminos y condiciones
-            </Link>
-            <Link href="#" className="hover:text-white/60 transition-colors">
-              Privacidad
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

@@ -12,18 +12,41 @@ export function AnimatedHero() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#05111f]">
-
+    <section
+      id="inicio"
+      className="relative h-screen w-full overflow-hidden bg-[#05111f]"
+    >
       {/* Sky gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0b1e35] via-[#081525] to-[#05111f]" />
 
       {/* Stars */}
       <div className="absolute inset-0 pointer-events-none">
         {[
-          [12, 8], [28, 5], [45, 12], [60, 3], [75, 9], [88, 6], [95, 14],
-          [18, 18], [35, 22], [52, 16], [67, 20], [82, 17], [92, 24],
-          [8, 30], [22, 28], [40, 33], [58, 26], [72, 31], [86, 27],
-          [5, 14], [50, 7], [70, 15], [33, 10], [80, 4], [15, 25],
+          [12, 8],
+          [28, 5],
+          [45, 12],
+          [60, 3],
+          [75, 9],
+          [88, 6],
+          [95, 14],
+          [18, 18],
+          [35, 22],
+          [52, 16],
+          [67, 20],
+          [82, 17],
+          [92, 24],
+          [8, 30],
+          [22, 28],
+          [40, 33],
+          [58, 26],
+          [72, 31],
+          [86, 27],
+          [5, 14],
+          [50, 7],
+          [70, 15],
+          [33, 10],
+          [80, 4],
+          [15, 25],
         ].map(([left, top], i) => (
           <div
             key={i}
@@ -56,14 +79,20 @@ export function AnimatedHero() {
         viewBox="0 0 1440 80"
         preserveAspectRatio="none"
       >
-        <path fill="#0d2a45" d="M0,40 C240,10 480,60 720,40 C960,20 1200,55 1440,35 L1440,80 L0,80 Z" />
+        <path
+          fill="#0d2a45"
+          d="M0,40 C240,10 480,60 720,40 C960,20 1200,55 1440,35 L1440,80 L0,80 Z"
+        />
       </svg>
       <svg
         className="absolute bottom-[24%] left-0 w-[200%] h-10 animate-wave-medium opacity-45"
         viewBox="0 0 1440 80"
         preserveAspectRatio="none"
       >
-        <path fill="#071e32" d="M0,50 C360,20 720,60 1080,40 C1260,30 1440,50 1440,50 L1440,80 L0,80 Z" />
+        <path
+          fill="#071e32"
+          d="M0,50 C360,20 720,60 1080,40 C1260,30 1440,50 1440,50 L1440,80 L0,80 Z"
+        />
       </svg>
 
       {/* ── CARGO SHIP SVG ── slides in from LEFT, stays in bottom-left quadrant */}
@@ -112,7 +141,14 @@ export function AnimatedHero() {
           />
 
           {/* Deck surface */}
-          <rect x="65" y="82" width="375" height="11" fill="url(#deckGrad)" rx="1" />
+          <rect
+            x="65"
+            y="82"
+            width="375"
+            height="11"
+            fill="url(#deckGrad)"
+            rx="1"
+          />
 
           {/* ── BRIDGE / SUPERSTRUCTURE at STERN (left side) ── */}
           {/* Lower cabin */}
@@ -122,22 +158,92 @@ export function AnimatedHero() {
           {/* Bridge top */}
           <rect x="78" y="31" width="50" height="6" fill="#243548" rx="1" />
           {/* Bridge windows */}
-          <rect x="81" y="39" width="11" height="8" fill="#2d5a8a" rx="1" opacity="0.9" />
-          <rect x="95" y="39" width="11" height="8" fill="#2d5a8a" rx="1" opacity="0.9" />
-          <rect x="109" y="39" width="11" height="8" fill="#2d5a8a" rx="1" opacity="0.85" />
+          <rect
+            x="81"
+            y="39"
+            width="11"
+            height="8"
+            fill="#2d5a8a"
+            rx="1"
+            opacity="0.9"
+          />
+          <rect
+            x="95"
+            y="39"
+            width="11"
+            height="8"
+            fill="#2d5a8a"
+            rx="1"
+            opacity="0.9"
+          />
+          <rect
+            x="109"
+            y="39"
+            width="11"
+            height="8"
+            fill="#2d5a8a"
+            rx="1"
+            opacity="0.85"
+          />
           {/* Cabin windows row */}
-          <rect x="78" y="58" width="9" height="6" fill="#1e3d5c" rx="1" opacity="0.8" />
-          <rect x="90" y="58" width="9" height="6" fill="#1e3d5c" rx="1" opacity="0.8" />
-          <rect x="102" y="58" width="9" height="6" fill="#1e3d5c" rx="1" opacity="0.8" />
-          <rect x="114" y="58" width="9" height="6" fill="#1e3d5c" rx="1" opacity="0.7" />
+          <rect
+            x="78"
+            y="58"
+            width="9"
+            height="6"
+            fill="#1e3d5c"
+            rx="1"
+            opacity="0.8"
+          />
+          <rect
+            x="90"
+            y="58"
+            width="9"
+            height="6"
+            fill="#1e3d5c"
+            rx="1"
+            opacity="0.8"
+          />
+          <rect
+            x="102"
+            y="58"
+            width="9"
+            height="6"
+            fill="#1e3d5c"
+            rx="1"
+            opacity="0.8"
+          />
+          <rect
+            x="114"
+            y="58"
+            width="9"
+            height="6"
+            fill="#1e3d5c"
+            rx="1"
+            opacity="0.7"
+          />
 
           {/* Funnel / Smokestack */}
           <rect x="88" y="18" width="16" height="14" fill="#101820" rx="1" />
           <rect x="90" y="14" width="12" height="5" fill="#991b1b" rx="1" />
 
           {/* Mast with antenna */}
-          <line x1="96" y1="12" x2="96" y2="-4" stroke="#3a4e62" strokeWidth="2" />
-          <line x1="91" y1="0" x2="101" y2="0" stroke="#3a4e62" strokeWidth="1.5" />
+          <line
+            x1="96"
+            y1="12"
+            x2="96"
+            y2="-4"
+            stroke="#3a4e62"
+            strokeWidth="2"
+          />
+          <line
+            x1="91"
+            y1="0"
+            x2="101"
+            y2="0"
+            stroke="#3a4e62"
+            strokeWidth="1.5"
+          />
 
           {/* ── CONTAINERS on deck ── */}
           {/* Row 1 – bottom */}
@@ -182,16 +288,37 @@ export function AnimatedHero() {
           <circle cx="448" cy="106" r="3" fill="#243548" />
 
           {/* Wake foam trail at stern */}
-          <ellipse cx="45" cy="130" rx="28" ry="5" fill="#0d2035" opacity="0.6" />
-          <ellipse cx="20" cy="132" rx="14" ry="3" fill="#0d2035" opacity="0.4" />
+          <ellipse
+            cx="45"
+            cy="130"
+            rx="28"
+            ry="5"
+            fill="#0d2035"
+            opacity="0.6"
+          />
+          <ellipse
+            cx="20"
+            cy="132"
+            rx="14"
+            ry="3"
+            fill="#0d2035"
+            opacity="0.4"
+          />
         </svg>
 
         {/* Water reflection under ship */}
         <div className="absolute -bottom-2 left-0 right-0 h-4 opacity-20">
-          <svg width="100%" height="16" viewBox="0 0 480 16" preserveAspectRatio="none">
+          <svg
+            width="100%"
+            height="16"
+            viewBox="0 0 480 16"
+            preserveAspectRatio="none"
+          >
             <path
               d="M0,6 Q80,2 160,8 Q240,14 320,6 Q400,0 480,8"
-              fill="none" stroke="white" strokeWidth="1.5"
+              fill="none"
+              stroke="white"
+              strokeWidth="1.5"
             />
           </svg>
         </div>
@@ -250,7 +377,7 @@ export function AnimatedHero() {
               Nuestros Servicios
             </a>
             <a
-              href="#contacto"
+              href="/#contacto"
               className="px-7 py-3 border border-white/25 text-white text-sm font-semibold rounded hover:bg-white/10 transition-colors tracking-wide"
             >
               Contactar

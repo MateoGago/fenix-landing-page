@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Inicio", href: "/" },
+  { label: "Inicio", href: "/#inicio" },
   { label: "Servicios", href: "/servicios" },
   { label: "Proceso", href: "/#proceso" },
   { label: "Nosotros", href: "/#nosotros" },
@@ -16,12 +16,27 @@ const navItems = [
 
 export function HeaderMinimal() {
   const [isOpen, setIsOpen] = useState(false);
+  const goToInicio = () => {
+  if (window.location.pathname !== "/") {
+    window.location.href = "/#inicio";
+    return;
+  }
+    window.history.replaceState(null, "", "/#inicio");
 
+    const inicio = document.getElementById("inicio");
+    inicio?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    setIsOpen(false);
+  };
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#071421] shadow-lg">
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-[#071421] shadow-lg">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={goToInicio}
+          className="flex items-center gap-3"
+        >
           <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden">
             <Image
               src="/images/fenix-logo.jpg"
@@ -34,10 +49,21 @@ export function HeaderMinimal() {
           <span className="text-white font-bold text-xl tracking-widest">
             FENIX
           </span>
-        </Link>
+        </button>
+
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+        {navItems.map((item) =>
+          item.label === "Inicio" ? (
+            <button
+              key={item.label}
+              type="button"
+              onClick={goToInicio}
+              className="text-white/70 hover:text-white text-sm uppercase tracking-widest transition-colors"
+            >
+              {item.label}
+            </button>
+          ) : (
             <Link
               key={item.label}
               href={item.href}
@@ -45,7 +71,8 @@ export function HeaderMinimal() {
             >
               {item.label}
             </Link>
-          ))}
+          ),
+        )}
         </div>
         {/* CTA button */}
         <Link
@@ -68,16 +95,27 @@ export function HeaderMinimal() {
       {isOpen && (
         <div className="md:hidden bg-[#0a1628]/95 backdrop-blur-lg border-t border-white/10">
           <div className="flex flex-col px-6 py-8 gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-white/70 hover:text-white text-lg uppercase tracking-widest transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.label === "Inicio" ? (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={goToInicio}
+                  className="text-left text-white/70 hover:text-white text-lg uppercase tracking-widest transition-colors"
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-white/70 hover:text-white text-lg uppercase tracking-widest transition-colors"
+                >
+                  {item.label}
+                </Link>
+              )    
+            )}
             <Link
               href="/#contacto"
               onClick={() => setIsOpen(false)}

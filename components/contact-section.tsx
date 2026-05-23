@@ -10,10 +10,12 @@ export function ContactSection() {
     company: "",
     message: "",
   });
+
   const [toast, setToast] = useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
+
   const [errors, setErrors] = useState<{
     name?: string;
     email?: string;
@@ -79,6 +81,26 @@ export function ContactSection() {
     }, 4000);
   };
 
+  const copyToClipboard = async (text: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+
+      setToast({
+        type: "success",
+        message: `${label} copiado correctamente.`,
+      });
+
+      setTimeout(() => {
+        setToast(null);
+      }, 2500);
+    } catch {
+      setToast({
+        type: "error",
+        message: "No se pudo copiar la información.",
+      });
+    }
+  };
+
   return (
     <section id="contacto" className="py-24 lg:py-32 bg-background">
       {toast && (
@@ -92,6 +114,7 @@ export function ContactSection() {
           <p className="text-sm font-medium">{toast.message}</p>
         </div>
       )}
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact info */}
@@ -99,53 +122,105 @@ export function ContactSection() {
             <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
               Contacto
             </p>
+
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8">
               Hablemos de tu proyecto
             </h2>
+
             <p className="text-muted-foreground leading-relaxed mb-12 max-w-md">
               Estamos listos para ayudarte a expandir tu negocio a nivel
-              internacional. Contactanos y recibe asesoria personalizada.
+              internacional. Contactanos y recibí asesoría personalizada.
             </p>
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">
-                    Direccion
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Av. Comercio Internacional 1234
-                    <br />
-                    Buenos Aires, Argentina
-                  </p>
-                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    copyToClipboard(
+                      "Puerto Madryn, Chubut, Argentina",
+                      "Dirección",
+                    )
+                  }
+                  className="flex items-start gap-4 text-left group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-primary/15">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                      Dirección
+                    </h4>
+
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors">
+                      Puerto Madryn, Chubut, Argentina
+                    </p>
+
+                    <span className="mt-1 block text-xs text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                      Click para copiar
+                    </span>
+                  </div>
+                </button>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">
-                    Telefono
-                  </h4>
-                  <p className="text-muted-foreground">+54 11 4567-8900</p>
-                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    copyToClipboard("+54 9 280 460-5206", "Teléfono")
+                  }
+                  className="flex items-start gap-4 text-left group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-primary/15">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                      Teléfono
+                    </h4>
+
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors">
+                      +54 9 280 460-5206
+                    </p>
+
+                    <span className="mt-1 block text-xs text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                      Click para copiar
+                    </span>
+                  </div>
+                </button>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                  <p className="text-muted-foreground">
-                    contacto@fenixcomex.com
-                  </p>
-                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    copyToClipboard(
+                      "alegago@fenixcomercioexterior.com.ar",
+                      "Email",
+                    )
+                  }
+                  className="flex items-start gap-4 text-left group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-primary/15">
+                    <Mail className="w-5 h-5 text-primary" />
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                      Email
+                    </h4>
+
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors break-all">
+                      alegago@fenixcomercioexterior.com.ar
+                    </p>
+
+                    <span className="mt-1 block text-xs text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                      Click para copiar
+                    </span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
@@ -218,6 +293,7 @@ export function ContactSection() {
                 >
                   Empresa
                 </label>
+
                 <input
                   type="text"
                   id="company"
