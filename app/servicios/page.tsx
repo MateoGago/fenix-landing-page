@@ -304,20 +304,22 @@ export default function ServiciosPage() {
                   pasos según tu operación.
                 </p>
 
-                <Link
-                  href="/#contacto"
-                  className="mt-5 inline-flex rounded-md bg-[#102B4E] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#173B66]"
-                >
-                  Consultar operación
-                </Link>
-                <a
-                  href="/docs/fenix-brochure-cotizaciones.pdf"
-                  download
-                  className="mt-3 inline-flex items-center gap-2 rounded-md border border-[#102B4E]/20 px-5 py-3 text-sm font-semibold text-[#102B4E] transition hover:bg-[#EEF4FA]"
-                >
-                  Descargar brochure
-                  <Download size={16} />
-                </a>
+                <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                  <Link
+                    href="/#contacto"
+                    className="inline-flex justify-center rounded-md bg-[#102B4E] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#173B66]"
+                  >
+                    Consultar operación
+                  </Link>
+                  <a
+                    href="/docs/fenix-brochure-cotizaciones.pdf"
+                    download
+                    className="inline-flex items-center justify-center gap-2 rounded-md border border-[#102B4E]/20 px-5 py-3 text-sm font-semibold text-[#102B4E] transition hover:bg-[#EEF4FA]"
+                  >
+                    Descargar brochure
+                    <Download size={16} />
+                  </a>
+                </div>
               </div>
             </div>
 
