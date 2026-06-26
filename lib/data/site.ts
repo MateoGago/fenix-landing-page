@@ -4,15 +4,15 @@ export const siteConfig = {
   description:
     "Comercio exterior, operaciones internacionales y acompañamiento estratégico para empresas.",
   contact: {
-    email: "contacto@fenix.com",
-    phone: "+54 9 11 0000-0000",
-    location: "Buenos Aires, Argentina",
+    email: "info@fenixcomercioexterior.com.ar",
+    phone: "+54 9 280 460-5206",
+    location: "Puerto Madryn, Chubut, Argentina",
   },
   nav: [
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/servicios" },
     { label: "Proceso", href: "/#proceso" },
-    { label: "Novedades", href: "/#novedades" },
+    { label: "Novedades", href: "/novedades" },
     { label: "Contacto", href: "/#contacto" },
   ],
   footer: {
@@ -23,7 +23,7 @@ export const siteConfig = {
           { label: "Inicio", href: "/" },
           { label: "Servicios", href: "/servicios" },
           { label: "Proceso", href: "/#proceso" },
-          { label: "Novedades", href: "/#novedades" },
+          { label: "Novedades", href: "/novedades" },
           { label: "Contacto", href: "/#contacto" },
         ],
       },

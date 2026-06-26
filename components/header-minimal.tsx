@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -16,11 +17,16 @@ const navItems = [
 
 export function HeaderMinimal() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
   const goToInicio = () => {
-  if (window.location.pathname !== "/") {
-    window.location.href = "/#inicio";
-    return;
-  }
+    if (pathname !== "/") {
+      setIsOpen(false);
+      router.push("/#inicio");
+      return;
+    }
+
     window.history.replaceState(null, "", "/#inicio");
 
     const inicio = document.getElementById("inicio");
@@ -53,26 +59,26 @@ export function HeaderMinimal() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-        {navItems.map((item) =>
-          item.label === "Inicio" ? (
-            <button
-              key={item.label}
-              type="button"
-              onClick={goToInicio}
-              className="text-white/70 hover:text-white text-sm uppercase tracking-widest transition-colors"
-            >
-              {item.label}
-            </button>
-          ) : (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-white/70 hover:text-white text-sm uppercase tracking-widest transition-colors"
-            >
-              {item.label}
-            </Link>
-          ),
-        )}
+          {navItems.map((item) =>
+            item.label === "Inicio" ? (
+              <button
+                key={item.label}
+                type="button"
+                onClick={goToInicio}
+                className="text-white/70 hover:text-white text-sm uppercase tracking-widest transition-colors"
+              >
+                {item.label}
+              </button>
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-white/70 hover:text-white text-sm uppercase tracking-widest transition-colors"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </div>
         {/* CTA button */}
         <Link
@@ -85,7 +91,8 @@ export function HeaderMinimal() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-white p-2"
-          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

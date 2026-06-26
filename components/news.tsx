@@ -7,7 +7,6 @@ export function News() {
   return (
     <section id="novedades" className="bg-white py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
           <div className="max-w-xl">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#17212B] mb-3 text-balance">
@@ -30,7 +29,6 @@ export function News() {
           </Link>
         </div>
 
-        {/* Posts grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {newsPosts.map((post) => (
             <Link
@@ -38,7 +36,6 @@ export function News() {
               href={`/novedades/${post.slug}`}
               className="bg-white border border-[#DDE1E7] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col group"
             >
-              {/* Image */}
               <div className="relative h-48 w-full overflow-hidden">
                 <Image
                   src={post.image}
@@ -49,7 +46,6 @@ export function News() {
                 />
               </div>
 
-              {/* Content */}
               <div className="p-6 flex flex-col gap-3 flex-1">
                 <span className="inline-block text-[10px] font-bold tracking-[0.12em] uppercase text-[#2E6F9E] bg-[#EEF4FA] px-2.5 py-1 rounded-full self-start">
                   {post.category}

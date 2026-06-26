@@ -1,4 +1,4 @@
-# Fenix Comercio Exterior
+﻿# Fenix Comercio Exterior
 
 Sitio web institucional desarrollado para **Fenix Comercio Exterior**, empresa dedicada a operaciones de comercio internacional, importación, exportación, logística internacional y asesoramiento documental.
 
@@ -23,6 +23,13 @@ El objetivo del sitio es presentar una imagen profesional, clara y confiable de 
 - TypeScript
 - Tailwind CSS
 - Vercel
+
+## Variables de entorno
+
+Para que el formulario de contacto envíe cotizaciones desde Vercel, configurar:
+
+- `RESEND_API_KEY`: API key de Resend.
+- `CONTACT_FROM_EMAIL`: remitente verificado en Resend, por ejemplo `Fenix Comercio Exterior <info@fenixcomercioexterior.com.ar>`.
 
 ## Derechos de autor
 

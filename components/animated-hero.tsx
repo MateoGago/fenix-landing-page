@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function AnimatedHero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -370,18 +371,18 @@ export function AnimatedHero() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <a
+            <Link
               href="/servicios"
               className="px-7 py-3 bg-white text-[#05111f] text-sm font-semibold rounded hover:bg-white/90 transition-colors tracking-wide"
             >
               Nuestros Servicios
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#contacto"
               className="px-7 py-3 border border-white/25 text-white text-sm font-semibold rounded hover:bg-white/10 transition-colors tracking-wide"
             >
               Contactar
-            </a>
+            </Link>
           </div>
         </div>
       </div>

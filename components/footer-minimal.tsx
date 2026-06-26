@@ -30,7 +30,7 @@ export function FooterMinimal() {
               FENIX
             </Link>
             <p className="mt-4 text-white/60 leading-relaxed max-w-xs">
-              Tu socio estrategico en comercio internacional. Conectamos tu
+              Tu socio estratégico en comercio internacional. Conectamos tu
               negocio con el mundo.
             </p>
             {/* Social links */}
@@ -50,7 +50,7 @@ export function FooterMinimal() {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="mailto:contacto@fenixcomex.com"
+                href="mailto:info@fenixcomercioexterior.com.ar"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white/40 hover:bg-white/5 transition-colors"
                 aria-label="Email"
               >
@@ -105,7 +105,7 @@ export function FooterMinimal() {
             <ul className="space-y-4 text-white/70">
               <li>Puerto Madryn, Chubut, Argentina</li>
               <li>+54 9 280 460-5206</li>
-              <li>alegago@fenixcomercioexterior.com.ar</li>
+              <li>info@fenixcomercioexterior.com.ar</li>
             </ul>
           </div>
         </div>

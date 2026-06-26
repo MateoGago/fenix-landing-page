@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Ship, FileText, Globe, TrendingUp, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import {
+  Ship,
+  FileText,
+  Globe,
+  TrendingUp,
+  ArrowRight,
+  Download,
+} from "lucide-react";
 
 const services = [
   {
@@ -7,6 +15,8 @@ const services = [
     number: "01",
     title: "Importaciones",
     href: "/servicios#importaciones",
+    image: "/images/services/importacion-neumaticos.jpeg",
+    imageAlt: "Contenedor con neumáticos importados",
     description:
       "Gestionamos todo el proceso de importación, desde la coordinación con proveedores hasta el despacho aduanero.",
   },
@@ -15,6 +25,8 @@ const services = [
     number: "02",
     title: "Exportaciones",
     href: "/servicios#exportaciones",
+    image: "/images/services/exportacion-carga-terrestre-lana-camion.jpeg",
+    imageAlt: "Carga terrestre de lana para exportación",
     description:
       "Acompañamos tu expansión internacional con documentación, logística y cumplimiento normativo.",
   },
@@ -23,6 +35,8 @@ const services = [
     number: "03",
     title: "Despacho aduanero",
     href: "/servicios#despacho-aduanero",
+    image: "/images/services/descarga-buque-consolidado-puerto.jpeg",
+    imageAlt: "Descarga de buque y consolidado en puerto",
     description:
       "Trámites aduaneros ágiles y precisos, minimizando tiempos y costos en cada operación.",
   },
@@ -31,6 +45,8 @@ const services = [
     number: "04",
     title: "Consultoría",
     href: "/servicios#consultoria",
+    image: "/images/services/ingreso-deposito-cargas-importacion.jpeg",
+    imageAlt: "Ingreso a depósito de cargas de importación",
     description:
       "Asesoría estratégica para optimizar tus operaciones de comercio exterior.",
   },
@@ -40,7 +56,6 @@ export function ServicesSection() {
   return (
     <section id="servicios" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
         <div className="max-w-3xl mb-20">
           <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
             Nuestros servicios
@@ -51,15 +66,24 @@ export function ServicesSection() {
           </h2>
         </div>
 
-        {/* Services grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
           {services.map((service) => (
             <Link
               key={service.number}
               href={service.href}
-              className="group block rounded-lg border border-border p-8 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-lg lg:p-10 md:text-left"
+              className="group block overflow-hidden rounded-lg border border-border bg-white text-center transition-all duration-300 hover:border-primary/30 hover:shadow-lg md:text-left"
             >
-              <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
+              <div className="relative h-56 w-full overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+
+              <div className="flex flex-col items-center gap-6 p-8 md:flex-row md:items-start lg:p-10">
                 <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                   <service.icon className="h-10 w-10" />
                 </div>
@@ -80,7 +104,7 @@ export function ServicesSection() {
           ))}
         </div>
 
-        <div className="mt-14 flex justify-center">
+        <div className="mt-14 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/servicios"
             className="inline-flex items-center gap-2 rounded-md bg-[#102B4E] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#173B66]"
@@ -88,6 +112,14 @@ export function ServicesSection() {
             Ver todos los servicios
             <ArrowRight size={16} />
           </Link>
+          <a
+            href="/docs/fenix-brochure-cotizaciones.pdf"
+            download
+            className="inline-flex items-center gap-2 rounded-md border border-[#102B4E]/20 bg-white px-7 py-3.5 text-sm font-semibold text-[#102B4E] transition-colors hover:bg-[#EEF4FA]"
+          >
+            Descargar brochure
+            <Download size={16} />
+          </a>
         </div>
       </div>
     </section>

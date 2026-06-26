@@ -14,7 +14,6 @@ interface NewsDetailPageProps {
 
 export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   const { slug } = await params;
-
   const post = newsPosts.find((item) => item.slug === slug);
 
   if (!post) {
