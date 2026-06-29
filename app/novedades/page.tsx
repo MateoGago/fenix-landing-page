@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { newsPosts } from "@/lib/data/news";
 import { HeaderMinimal } from "@/components/header-minimal";
 import { FooterMinimal } from "@/components/footer-minimal";
+
+export const metadata: Metadata = {
+  title: "Novedades de comercio exterior",
+  description:
+    "Información y recomendaciones sobre importación, exportación, aduana y logística internacional.",
+  alternates: {
+    canonical: "/novedades",
+  },
+};
 
 export default function NovedadesPage() {
   return (

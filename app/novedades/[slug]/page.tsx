@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -10,6 +11,36 @@ interface NewsDetailPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return newsPosts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: NewsDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = newsPosts.find((item) => item.slug === slug);
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `/novedades/${post.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `/novedades/${post.slug}`,
+      images: [{ url: post.image, alt: post.imageAlt }],
+    },
+  };
 }
 
 export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
