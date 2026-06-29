@@ -6,7 +6,6 @@ import {
   Globe,
   TrendingUp,
   ArrowRight,
-  Download,
 } from "lucide-react";
 
 const services = [
@@ -104,7 +103,7 @@ export function ServicesSection() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-14 flex justify-center">
           <Link
             href="/servicios"
             className="inline-flex items-center gap-2 rounded-md bg-[#102B4E] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#173B66]"
@@ -112,14 +111,6 @@ export function ServicesSection() {
             Ver todos los servicios
             <ArrowRight size={16} />
           </Link>
-          <a
-            href="/docs/fenix-brochure-cotizaciones.pdf"
-            download
-            className="inline-flex items-center gap-2 rounded-md border border-[#102B4E]/20 bg-white px-7 py-3.5 text-sm font-semibold text-[#102B4E] transition-colors hover:bg-[#EEF4FA]"
-          >
-            Descargar brochure
-            <Download size={16} />
-          </a>
         </div>
       </div>
     </section>

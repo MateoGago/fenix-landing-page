@@ -14,7 +14,6 @@ import {
   ClipboardCheck,
   PackageCheck,
   Building2,
-  Download,
 } from "lucide-react";
 import { HeaderMinimal } from "@/components/header-minimal";
 import { FooterMinimal } from "@/components/footer-minimal";
@@ -304,21 +303,13 @@ export default function ServiciosPage() {
                   pasos según tu operación.
                 </p>
 
-                <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <div className="mt-6">
                   <Link
                     href="/#contacto"
                     className="inline-flex justify-center rounded-md bg-[#102B4E] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#173B66]"
                   >
                     Consultar operación
                   </Link>
-                  <a
-                    href="/docs/fenix-brochure-cotizaciones.pdf"
-                    download
-                    className="inline-flex items-center justify-center gap-2 rounded-md border border-[#102B4E]/20 px-5 py-3 text-sm font-semibold text-[#102B4E] transition hover:bg-[#EEF4FA]"
-                  >
-                    Descargar brochure
-                    <Download size={16} />
-                  </a>
                 </div>
               </div>
             </div>
@@ -451,21 +442,13 @@ export default function ServiciosPage() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
+              <div>
                 <Link
                   href="/#contacto"
                   className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#102B4E] transition hover:bg-[#EAF2F8]"
                 >
                   Contactar ahora
                 </Link>
-                <a
-                  href="/docs/fenix-brochure-cotizaciones.pdf"
-                  download
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                >
-                  Descargar brochure
-                  <Download size={16} />
-                </a>
               </div>
             </div>
           </div>
