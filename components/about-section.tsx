@@ -7,7 +7,7 @@ const teamGroups = [
     members: [
       {
         name: "Mariño Gloria",
-        phone: "+54 9 280 4753531",
+        phone: "+54 9 280 4573531",
         email: "gloriam@fenixcomercioexterior.com.ar",
       },
       {
