@@ -86,13 +86,7 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 mt-10">
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">+500</div>
-                <div className="text-sm text-muted-foreground">
-                  Operaciones anuales
-                </div>
-              </div>
+            <div className="mt-10">
               <div>
                 <div className="text-3xl font-bold text-primary mb-2">98%</div>
                 <div className="text-sm text-muted-foreground">
